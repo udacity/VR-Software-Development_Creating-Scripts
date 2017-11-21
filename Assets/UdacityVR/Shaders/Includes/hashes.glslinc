@@ -1,0 +1,23 @@
+﻿//random hashes - blue noise
+//float 	hash(float v);
+//vec2 	hash(vec2 v);
+//vec3 	hash(vec3 v);
+
+float hash(float u)
+{
+	u = sin(u)*1234.56789;
+	return  fract(fract(u)*u);
+	
+}
+
+vec2 hash( vec2 uv ) 
+{	
+	uv += sin(uv.yx*1234.5678);
+	return fract(cos(sin(uv+uv.x+uv.y))*1234.5678);
+}
+
+vec3 hash(vec3 uvw) 
+{
+	mat3 m = mat3(108.0, -35.7, -93.9, -75.3, 82.0, 39.7, 	      -67.29, 91.0, -18.7);
+	return fract(sin(m*sin(uvw*m)*1234.56789));	
+}

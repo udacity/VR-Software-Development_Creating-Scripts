@@ -1,0 +1,144 @@
+//fields
+//float sphere(vec3 position, float radius);
+//float sphere(vec2 position, float radius);
+//float cube(vec3 p, vec3 s);
+//float cube(vec2 position, vec2 scale);
+//float torus( vec3 p, vec2 t );
+//float torus(vec2 position, vec2 radius);
+//float cylinder(vec3 p, float l, float r);
+//float cone(vec3 p, float l, vec2 r);
+//float hex( vec3 p, vec2 h );
+//float tri( vec3 p, vec2 h );
+//float simplex(vec2 position, float scale);
+//float projection(vec3 p, vec3 a, vec3 b, float r);
+//float projection(vec2 position, vec2 a, vec2 b);
+//vec2  project(vec2 position, vec2 a, vec2 b);
+//float frame(vec3 p, vec3 r);
+
+
+vec2 project(vec2 position, vec2 a, vec2 b)
+{
+	vec2 q	 	= b - a;	
+	float u 	= dot(position - a, q)/dot(q, q);
+	u 			= clamp(u, 0., 1.);
+	return mix(a, b, u);
+}
+
+float sphere(vec3 position, float radius)
+{
+	return length(position)-radius; 
+}
+
+
+float sphere(vec2 position, float radius)
+{
+	return length(position)-radius;
+}
+
+
+float cube(vec3 p, vec3 s)
+{
+	vec3 d = (abs(p) - s);
+	return min(max(d.x,max(d.y,d.z)),0.0) + length(max(d,0.0));
+}
+
+
+float cube(vec2 position, vec2 scale)
+{
+	vec2 vertex 	= abs(position) - scale;
+	vec2 edge 		= max(vertex, 0.);
+	float interior	= max(vertex.x, vertex.y);
+	return min(interior, 0.) + length(edge);
+}
+
+
+float torus( vec3 p, vec2 t )
+{
+	vec2 q = vec2(length(p.xz)-t.x, p.y);
+	return length(q)-t.y;
+}
+
+
+float torus(vec2 position, vec2 radius)
+{
+	return abs(abs(length(position)-radius.x)-radius.y);
+}
+
+
+float cylinder(vec3 p, float l, float r)
+{
+	return max(abs(p.y-l)-l, length(p.xz)-r);
+}
+
+
+float cone(vec3 p, float l, vec2 r)
+{
+	float m = 1.-(p.y*.5)/l;
+	return max(length(p.xz)-mix(r.y, r.x, m), abs(p.y-l)-l);
+}
+
+
+float simplex(vec2 position, float scale)
+{		
+	position.y	/= R3; 
+	
+	vec3 edge	= vec3(0.);
+	edge.x		= position.y + position.x;
+	edge.y		= position.x - position.y;
+	edge.z		= position.y + position.y;
+	edge		*= R3 * .5;
+	
+	return max(edge.x, max(-edge.y, -edge.z))-scale/R3;
+}
+
+
+float hex( vec3 p, vec2 h )
+{
+	vec3 q = abs(p);
+	return max(q.z-h.y,max(q.x+q.y*0.57735,q.y*1.1547)-h.x);
+}
+
+
+float tri( vec3 p, vec2 h )
+{
+	vec3 q = abs(p);
+	return max(q.z-h.y,max(q.x*0.866025+p.y*0.5,-p.y)-h.x*0.5);
+}
+
+
+float projection( vec3 p, vec3 a, vec3 b, float r)
+{
+	vec3 pa = p - a;
+	vec3 ba = b - a;
+	float h = clamp( dot(pa,ba)/dot(ba,ba), 0.0, 1.0 );
+	
+	return length( pa - ba*h ) - r;
+}
+
+
+float projection(vec2 position, vec2 a, vec2 b)
+{
+	return distance(position, project(position, a, b));
+}
+
+
+float frame(vec3 p, vec3 r)
+{
+	p		= abs(p)-r;
+	float x = max(p.x, p.y);
+	float y = max(p.x, p.z);
+	float z = max(p.y, p.z);
+					
+	return max(max(max(x, y), z) - .05, -min(min(x, y),z));;
+}
+
+float lattice(vec3 position, float scale, float width) 
+{
+	position 	= mod(position, scale) - scale * .5;
+	position 	= max(-abs(position), -position - scale);
+	float x		= max(position.x, position.y);
+	float y 	= max(position.x, position.z);
+	float z 	= max(position.y, position.z);
+					
+	return max(max(max(x, y), z), -min(min(x, y),z)) - width;
+}

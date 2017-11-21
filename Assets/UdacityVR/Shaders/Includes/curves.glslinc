@@ -1,0 +1,63 @@
+﻿//Curves
+//float smoothmax(float a, float b, float x);
+//float smoothmin(float a, float b, float x);
+//float linstep(float a, float b, float x);
+//float expstep(float a, float b, float x);
+//float impulse(float a, float x );
+//float cubicpulse(float a, float b, float x);
+//float parabola( float a, float b, float x);
+//float gain(float g, float t);
+//float boxstep(float a, float b, float t);
+
+
+float smoothmax(float a, float b, float x)
+{
+	return log(exp(x*a)+exp(x*b))/x;
+}
+
+float smoothmin(float a, float b, float x)
+{
+	return -(log(exp(x*-a)+exp(x*-b))/x);
+}
+
+float linstep(float a, float b, float x)
+{
+    return clamp((x-a)/(b-a),0.,1.);
+}
+
+float expstep(float a, float b, float x)
+{
+    return exp(-b*pow(a,x));
+}
+
+float impulse(float a, float x )
+{
+    float h = a*x;
+    return h*exp(1.-h);
+}
+
+float cubicpulse(float a, float b, float x)
+{
+    x = abs(x - a);
+    if(x > b) return 0.0;
+    x /= b;
+    return x;//1. - smooth(x);
+}
+	
+float parabola( float a, float b, float x)
+{
+	x=2.*clamp((x-a)/(b-a),0.,1.)-1.;
+	return 1.-x*x;
+}
+
+float gain(float g, float t)
+{
+	float n = step(.5, t);
+	float p = (1. / g - 2.) * (1. - 2. * t);
+	return (1. - n) * t / (p + 1.) + n * (p - t) / (p - 1.);
+}
+
+float boxstep(float a, float b, float t)
+{
+	return clamp((t - a)/(b - a), 0., 1.);
+}

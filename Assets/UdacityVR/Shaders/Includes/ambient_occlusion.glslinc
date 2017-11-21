@@ -1,0 +1,16 @@
+//ambient occlusion 
+float ambient_occlusion( in vec3 p, in vec3 n )
+{
+  	float occ = 0.0;
+  	float sca = .07;
+  	for (int i = 1; i < 8; i++ )
+  	{
+		float hr 	= sca * float(i);
+		float dd 	= map(n * hr + p);
+		occ 		+= 16.*-(dd-hr) * sca;
+		sca 		*= .88;
+  	}
+  	
+  	return clamp(1. - occ, 0., 1.0 );
+}
+//

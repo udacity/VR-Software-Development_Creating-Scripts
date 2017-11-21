@@ -1,0 +1,20 @@
+﻿//Unity Depth and Normal Buffer Decoders
+//float decode_float_xy( vec2 enc );
+//vec3 decode_view_normal_stereo( vec4 enc4 );
+
+float decode_float_xy( vec2 enc )
+{
+	vec2 kDecodeDot = vec2(1., 1./255.);
+	return dot( enc, kDecodeDot );
+}
+				
+vec3 decode_view_normal_stereo( vec4 enc4 )
+{
+	float kScale = 1.7777;
+	vec3 nn = enc4.xyz*vec3(2.*kScale,2.*kScale,0.) + vec3(-kScale,-kScale,1.);
+	float g = 2. / dot(nn.xyz,nn.xyz);
+	vec3 n;
+	n.xy = g*nn.xy;
+	n.z = g-1.;
+	return n;
+}

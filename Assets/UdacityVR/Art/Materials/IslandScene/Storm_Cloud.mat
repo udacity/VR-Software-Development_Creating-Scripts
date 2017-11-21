@@ -1,0 +1,211 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Storm_Cloud
+  m_Shader: {fileID: 4800000, guid: abe403a86074849fb92fae0cf477cd1c, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: 2000
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _BumpMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _DetailAlbedoMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _DetailMask
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _DetailNormalMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _EmissionMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MetallicGlossMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _OcclusionMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _ParallaxMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _BRDF
+      second: 0
+    - first:
+        name: _BumpScale
+      second: 1
+    - first:
+        name: _Curvature
+      second: 0.59
+    - first:
+        name: _Cutoff
+      second: 0.5
+    - first:
+        name: _Depth
+      second: 0
+    - first:
+        name: _Derivative
+      second: -0.09
+    - first:
+        name: _DetailNormalMapScale
+      second: 1
+    - first:
+        name: _Displacement
+      second: -0.06
+    - first:
+        name: _Distribution
+      second: 0
+    - first:
+        name: _DstBlend
+      second: 0
+    - first:
+        name: _Fresnel
+      second: 0
+    - first:
+        name: _Geometry
+      second: 0
+    - first:
+        name: _Glossiness
+      second: 0.5
+    - first:
+        name: _Half_Direction
+      second: 0
+    - first:
+        name: _Half_Exposure
+      second: 0
+    - first:
+        name: _Haze
+      second: 0.0477
+    - first:
+        name: _Height
+      second: -0.05
+    - first:
+        name: _Light_Direction
+      second: 0
+    - first:
+        name: _Light_Exposure
+      second: 0
+    - first:
+        name: _Metallic
+      second: 0
+    - first:
+        name: _Mode
+      second: 0
+    - first:
+        name: _Nmod
+      second: 0.5
+    - first:
+        name: _Normal
+      second: 0
+    - first:
+        name: _OcclusionStrength
+      second: 1
+    - first:
+        name: _Parallax
+      second: 0.02
+    - first:
+        name: _Refractive_Index
+      second: -1.28
+    - first:
+        name: _Resolution
+      second: 128
+    - first:
+        name: _Result
+      second: 0.59
+    - first:
+        name: _Roughness
+      second: 0.66
+    - first:
+        name: _SrcBlend
+      second: 1
+    - first:
+        name: _Tangent
+      second: 0
+    - first:
+        name: _Topography
+      second: 0
+    - first:
+        name: _Translation
+      second: 0.66
+    - first:
+        name: _UV
+      second: 0
+    - first:
+        name: _UVSec
+      second: 0
+    - first:
+        name: _View_Direction
+      second: 0
+    - first:
+        name: _View_Exposure
+      second: 0
+    - first:
+        name: _ZWrite
+      second: 1
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _EmissionColor
+      second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _Height
+      second: {r: -0.74, g: 0.78, b: 1.14, a: -0.71}
+    - first:
+        name: _Scale
+      second: {r: 1.96, g: 7.18, b: -21.9, a: 1.09}
+    - first:
+        name: _SkyColor
+      second: {r: 1, g: 1, b: 1, a: 0.5}
+    - first:
+        name: _Velocity
+      second: {r: -1.37, g: 1, b: -4, a: 8}
+    - first:
+        name: _WaterColor
+      second: {r: 0.8308824, g: 0.8308824, b: 0.8308824, a: 0.25}
+    - first:
+        name: _Waves
+      second: {r: -1.2, g: 0.23, b: -0.89, a: 2.06}
