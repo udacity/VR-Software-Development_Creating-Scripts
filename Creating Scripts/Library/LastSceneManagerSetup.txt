@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/UdacityVR/Scenes/00-FallingCoconut.unity
+  isLoaded: 1
+  isActive: 1
